@@ -3,7 +3,7 @@ import EventCard from '../components/EventCard';
 import { Event } from '../types/event';
 import { Search, Filter } from 'lucide-react';
 
-const MOCK_EVENTS: Event[] = [
+export const MOCK_EVENTS: Event[] = [
   {
     id: '1',
     title: 'Tech Conference 2024',

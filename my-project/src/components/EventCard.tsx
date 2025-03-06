@@ -1,12 +1,15 @@
 import React from 'react';
 import { Calendar, MapPin, Clock } from 'lucide-react';
 import { Event } from '../types/event';
+import { useNavigate } from 'react-router-dom';
 
 interface EventCardProps {
   event: Event;
 }
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="event-card bg-white rounded-xl shadow-sm overflow-hidden">
       <div className="relative">
@@ -38,7 +41,10 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         </div>
         <p className="mt-4 text-gray-600 line-clamp-3">{event.description}</p>
         <div className="mt-6">
-          <button className="btn-primary w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-indigo-700">
+          <button 
+            onClick={() => navigate(`/event/${event.id}`)}
+            className="btn-primary w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-medium hover:bg-indigo-700"
+          >
             View Details
           </button>
         </div>

@@ -4,6 +4,7 @@ import Sidebar from './components/Sidebar';
 import AuthForm from './components/AuthForm';
 import Events from './pages/Events';
 import CreateEvent from './pages/CreateEvent';
+import EventDetails from './pages/EventDetails';
 
 function App() {
   // This will be connected to AWS Cognito later
@@ -26,6 +27,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Navigate to="/events" replace />} />
             <Route path="/events" element={<Events />} />
+            <Route path="/event/:id" element={<EventDetails />} />
             <Route path="/create-event" element={<CreateEvent />} />
           </Routes>
         </main>
