@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Calendar, Clock, MapPin, User } from 'lucide-react';
 import { Event } from '../types/event';
 import { MOCK_EVENTS } from './Events';
+import ShareDialog from '../components/ShareDialog';
 
 const EventDetails = () => {
   const { id } = useParams();
   const event = MOCK_EVENTS.find(e => e.id === id);
+  const [isShareDialogOpen, setIsShareDialogOpen] = useState(false);
 
   if (!event) {
     return (
@@ -71,12 +73,21 @@ const EventDetails = () => {
             <button className="btn-primary flex-1 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 text-white py-3 px-6 rounded-lg font-medium">
               Register Now
             </button>
-            <button className="flex-1 border border-gray-200 hover:border-gray-300 text-gray-700 py-3 px-6 rounded-lg font-medium transition-all duration-200">
+            <button 
+              onClick={() => setIsShareDialogOpen(true)}
+              className="flex-1 border border-gray-200 hover:border-gray-300 text-gray-700 py-3 px-6 rounded-lg font-medium transition-all duration-200"
+            >
               Share Event
             </button>
           </div>
         </div>
       </div>
+
+      <ShareDialog
+        isOpen={isShareDialogOpen}
+        onClose={() => setIsShareDialogOpen(false)}
+        eventId={event.id}
+      />
     </div>
   );
 };
