@@ -12,13 +12,13 @@ function App() {
   // This will be connected to AWS Cognito later
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
 
-  const handleAuth = (data: { email: string; password: string }) => {
+  const handleAuth = (data: { email: string; password: string; name?: string }) => {
     console.log('Auth data:', data);
     setIsAuthenticated(true);
   };
 
   if (!isAuthenticated) {
-    return <AuthForm mode="login" onSubmit={handleAuth} />;
+    return <AuthForm onSubmit={handleAuth} />;
   }
 
   return (
