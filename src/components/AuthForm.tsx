@@ -28,7 +28,7 @@ const AuthForm: React.FC<AuthFormProps> = ({ onSubmit }) => {
 
   const handleFormSubmit = (data: AuthFormData) => {
     // Test user validation
-    if (isLogin && data.email === 'test@123' && data.password === 'test@123') {
+    if (isLogin && data.email === 'test@gmail.com' && data.password === 'test@123') {
       onSubmit(data);
     } else if (!isLogin) {
       // For signup, just pass the data through
